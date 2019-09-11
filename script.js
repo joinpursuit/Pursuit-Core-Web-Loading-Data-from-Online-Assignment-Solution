@@ -1,3 +1,6 @@
+// ESLint used to adhere to following style guide: https://github.com/airbnb/javascript
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 const getRandomInt = function getRandomInt(min, max) {
   const mathMin = Math.ceil(min);
   const mathMax = Math.floor(max);
@@ -55,7 +58,10 @@ const displayPokemon = function displayRandomPokemon(newData, float) {
   let moveNum;
   let moveURL;
   nameNode.id = pokemonID;
+
+  // Set the sprite to float on left or right. https://www.w3schools.com/jsref/prop_style_cssfloat.asp
   container.style.cssFloat = float;
+
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonID}`)
     .then((res) => {
       if (res.ok) {
@@ -92,7 +98,7 @@ const displayPokemon = function displayRandomPokemon(newData, float) {
     .catch(() => {});
 };
 
-const getRandomPokemon = function getRandomPokemon() {
+const getPokemon = function getRandomPokemon() {
   const newData = document.createElement('div');
   newData.classList.add('data');
   displayPokemon(newData, 'left');
