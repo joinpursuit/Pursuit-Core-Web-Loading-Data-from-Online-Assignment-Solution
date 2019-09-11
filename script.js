@@ -1,61 +1,58 @@
+// return random int
+function getRandomInt(min, max) {
+  const mathMin = Math.ceil(min);
+  const mathMax = Math.floor(max);
+  // The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (mathMax - mathMin)) + mathMin;
+}
+
 function fightPokemon() {
-  let topLevel = document.querySelector("body");
-  let dataArea = document.querySelector(".data");
-  let pokemons = dataArea.querySelectorAll("div");
-  winner = getRandomInt(0, 2);
-  winningPokemon = pokemons[winner].querySelector("h3").innerText;
-  losingPokemon = pokemons[(winner + 1) % 2].querySelector("h3").innerText;
-  let fightHistory = document.querySelector(".fightHistory");
-  let titleNode = document.createElement("h5");
-  titleNode.innerText = winningPokemon + " defeated " + losingPokemon;
+  const dataArea = document.querySelector('.data');
+  const pokemons = dataArea.querySelectorAll('div');
+  const winner = getRandomInt(0, 2);
+  const winningPokemon = pokemons[winner].querySelector('h3').innerText;
+  const losingPokemon = pokemons[(winner + 1) % 2].querySelector('h3').innerText;
+  const fightHistory = document.querySelector('.fightHistory');
+  const titleNode = document.createElement('h5');
+  titleNode.innerText = `${winningPokemon} defeated ${losingPokemon}`;
   fightHistory.appendChild(titleNode);
 }
 
 function displayRandomPokemon(pokemonID, newData) {
-  let topLevel = document.querySelector("body");
+  const topLevel = document.querySelector('body');
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonID}`)
-    .then(res => {
+    .then((res) => {
       if (res.ok) {
         return res.json();
-      } else {
-        throw new Error("Network Problem");
       }
+      throw new Error('Network Problem');
     })
-    .then(data => {
-      let container = document.createElement("div");
-      let titleNode = document.createElement("h3");
+    .then((data) => {
+      const container = document.createElement('div');
+      const titleNode = document.createElement('h3');
       // Display name of pokemon
       titleNode.innerText = data.name;
       // Display sprite of pokemon
-      var elem = document.createElement("img");
-      elem.setAttribute("src", data.sprites.front_default);
-      elem.setAttribute("height", "200");
-      elem.setAttribute("width", "200");
+      const elem = document.createElement('img');
+      elem.setAttribute('src', data.sprites.front_default);
+      elem.setAttribute('height', '200');
+      elem.setAttribute('width', '200');
       container.appendChild(titleNode);
       container.appendChild(elem);
       newData.appendChild(container);
-      let dataArea = document.querySelector(".data");
+      const dataArea = document.querySelector('.data');
       topLevel.replaceChild(newData, dataArea);
     })
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(() => {});
 }
 
 // return body of random pokemon
 function getRandomPokemon() {
-  let topLevel = document.querySelector("body");
-  let newData = document.createElement("div");
-  newData.classList.add("data");
-  var pokemonID = getRandomInt(1, 800);
+  const topLevel = document.querySelector('body');
+  const newData = document.createElement('div');
+  newData.classList.add('data');
+  let pokemonID = getRandomInt(1, 800);
   displayRandomPokemon(pokemonID, newData);
   pokemonID = getRandomInt(1, 800);
   displayRandomPokemon(pokemonID, newData);
-}
-
-// return random int
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
