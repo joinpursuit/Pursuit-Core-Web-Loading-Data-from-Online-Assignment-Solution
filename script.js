@@ -8,10 +8,10 @@ function getRandomInt(min, max) {
 
 function fightPokemon() {
   const dataArea = document.querySelector('.data');
-  const pokemons = dataArea.querySelectorAll('div');
+  const pokemon = dataArea.querySelectorAll('div');
   const winner = getRandomInt(0, 2);
-  const winningPokemon = pokemons[winner].querySelector('h3').innerText;
-  const losingPokemon = pokemons[(winner + 1) % 2].querySelector('h3').innerText;
+  const winningPokemon = pokemon[winner].querySelector('h3').innerText;
+  const losingPokemon = pokemon[(winner + 1) % 2].querySelector('h3').innerText;
   const fightHistory = document.querySelector('.fightHistory');
   const titleNode = document.createElement('h5');
   titleNode.innerText = `${winningPokemon} defeated ${losingPokemon}`;
