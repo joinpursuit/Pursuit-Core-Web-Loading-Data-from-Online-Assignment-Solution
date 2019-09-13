@@ -26,9 +26,7 @@ Each time your user clicks the 'get pokemon' button and the following must occur
 
 Each time the 'get Pokemon' button is clicked, two new Pokemon should be displayed, and the old two Pokemon from the should no longer be displayed.
 
-Each time your user clicks the 'battle' button, one of your two pokemon should be randomly selected as the winner. Append to the `battleHistory` div class an `h5` tag containing the text  
-'{$winningPokemonName} defeated {$losingPokemonName}'. See picture for an example.
-
+Each time your user clicks the 'battle' button, one of your two pokemon should be randomly selected as the winner. Add a description of the fight to the `battleHistory` section at the bottom.
 
 ## Endpoints
 
@@ -65,8 +63,7 @@ On top of default HTML styling, the app should have the following styles:
 
 - **data**
   - Should have a width of 600px.
-  - The first pokemon should float left, the second pokemon
-  should float right. See picture. 
+  - The first pokemon should float left, the second pokemon should float right. 
 
 For a video of how the page changes when the buttons are clicked visit https://youtu.be/_XVy4hRZ_Ig
 
